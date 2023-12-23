@@ -1,5 +1,4 @@
-from django.shortcuts import render
-from django.shortcuts import get_object_or_404
+from django.shortcuts import render, HttpResponse
 from django.http import JsonResponse
 from .models import Usuario
 from django.views.decorators.csrf import csrf_exempt
@@ -26,7 +25,7 @@ class UsuarioView(View):
                 data_res = {'message': "Success", 'user':user }
             else:
                 data_res = {'message': "user not found..."}
-            return JsonResponse(data_res)
+            #return JsonResponse(data_res)
         else:
             users = list(Usuario.objects.values()) # Convert QuerySet to list of dictionaries
             if len(users) > 0:
@@ -34,7 +33,7 @@ class UsuarioView(View):
             else:
                 data_res = {'message': "users not found..."}
         
-            return JsonResponse(data_res)
+        return JsonResponse(data_res)
     
     
     def post(self, request):
@@ -75,35 +74,7 @@ class UsuarioView(View):
             data_res = {'error': "e404 User not Found..."}
             
         return JsonResponse(data_res)
-# here
 
-
-
-#    def put(self, request, user_id):
-#        user = get_object_or_404(Usuario, id=user_id)
-#        data = json.loads(request.body)
-#        user.nombre = data['nombre']
-#        user.email = data['email']
-#        user.edad = data['edad']
-#        user.save()
-#        return JsonResponse({'id': user.id, 'nombre': user.nombre, 'email': user.email, 'edad': user.edad})
-#
-#    def delete(self, request, user_id):
-#        user = get_object_or_404(Usuario, id=user_id)
-#        user.delete()
-#        return JsonResponse({'message': 'Usuario eliminado correctamente'})
-    
-    
-    #    def get(self, request, user_id=None):
-#        if user_id:
-#            user = get_object_or_404(Usuario, id=user_id)
-#            data = {'id': user.id, 'nombre': user.nombre, 'email': user.email, 'edad': user.edad}
-#        else:
-#            users = Usuario.objects.all()
-#            data = [{'id': user.id, 'nombre': user.nombre, 'email': user.email, 'edad': user.edad} for user in users]
-#        return JsonResponse(data, safe=False)
-
-#    def post(self, request):
-#        data = json.loads(request.body)
-#        usuario = Usuario.objects.create(nombre=data['nombre'], email=data['email'], edad=data['edad'])
-#        return JsonResponse({'id': usuario.id, 'nombre': usuario.nombre, 'email': usuario.email, 'edad': usuario.edad})
+# views
+def home(request):
+    return HttpResponse("<h2>Welcome to my app</h2>")
