@@ -24,19 +24,20 @@ https://github.com/polodiaz/Andesprueba.git
 
 ## Documentation
 
-1) Configuración de la Base de Datos: 
+1) Configuración de la Base de Datos:
+   - Importante configuracion de datos en Mysql server
 
 Crea una base de datos MySQL llamada usuarios_andes 
 
   
-bash
+```bash
 Solución: 
 
 Se procedió a crear en Mysql una base de Datos llamada usuarios_andes. 
 Utilizano el siguiente comando CREATE DATABASE usuarios_andes; se adjunta Ejemplo.
 
 create DATABASE usuarios_andes;
-  
+```
  
 
 
@@ -52,7 +53,7 @@ id (clave primaria, autoincremento)
 nombre,email,Edad 
 
  
-bash
+```bash
 
 Solucion:
 Utilizando el siguiente comando CREATE TABLE usuarios; 
@@ -69,7 +70,7 @@ CREATE TABLE usuarios(
 
 ); 
   
- 
+```
 
 
 
