@@ -212,11 +212,46 @@ Se procede con la creación de la función delete la cual obtiene los datos de U
 8. Rutas y Vistas: 
 
 urlpatterns = [
-    # /usuario/: maneja las operaciones GET y POST que obtienen la lista de usuarios o crean un nuevo usuario
+    - /usuario/: maneja las operaciones GET y POST que obtienen la lista de usuarios o crean un nuevo usuario
     path('usuarios/', UsuarioView.as_view(), name='Listar Usuarios'),
-    # /usuario/id/: maneja las operaciones GET, PUT, DELETE, las cuales obtienen, actualizan y eliminan un usuario específico según su ID
+    - /usuario/id/: maneja las operaciones GET, PUT, DELETE, las cuales obtienen, actualizan y eliminan un usuario específico según su ID
     path('usuarios/<int:id>/', UsuarioView.as_view(), name='User Detail by ID'),
 ]
+
+## 1. Informacion FRONTEND - React
+Para el front de la aplicacion "gestion de usuarios" se genero por medio de React 
+## 1.1. Herramientas para React 
+
+- se implemento la Herramienta Vite para el manejo de React
+- Importante! --> INSTALACION DE REACT
+- Instalaciones: 
+
+```bash
+  npm create vite
+  cd client -- ingresar al directorio creado
+  npm install -- instalacion de paquetes
+  npm run dev -- correr el front
+
+  react-router-dom --> Biblioteca utilizada para gestionar múltiples rutas en la aplicación.
+  react-hot-toast --> Biblioteca empleada para mostrar notificaciones cuando se realizan cambios en la aplicación web.
+  axios --> Librería utilizada para realizar peticiones HTTP desde el cliente.
+  react-hook-form --> Utilizado para facilitar el manejo y recolección de datos mediante formularios en React.
+```
+## 1.2. CRUD
+Se realizaron las peticiones para el Backend por medio de la libreria Axios, creando una baseURL a nuestra ruta "http://127.0.0.1:8000/api/usuarios/" para las cuatro peticiones:
+- Get
+```bash
+import axios from 'axios'
+
+const usuarioApi = axios.create({
+    baseURL: "http://127.0.0.1:8000/api/usuarios/",
+})
+export const getUsuarios = () => usuarioApi.get("/");
+```
+- Put
+- Post
+- Delete
+
 ## Authors
 
 - [@cristian.diaz](https://github.com/polodiaz)
